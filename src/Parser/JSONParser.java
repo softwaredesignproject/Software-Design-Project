@@ -6,6 +6,7 @@ package Parser;
 
 import java.io.InputStream;
 import org.json.*;
+
 import Route.RouteDetails;
 import java.util.*;
 
@@ -49,34 +50,48 @@ public class JSONParser {
         return arraysForLegs;
     }
 
-    public String getDurationValue(ArrayList<JSONObject> arraysForLegs) {
-        String durationValue = "";
+    public String[] getDurationValue(ArrayList<JSONObject> alParsedResult) {
+        String []durationValue = new String[alParsedResult.size()];
         try {
-            for (int i = 0; i < arraysForLegs.size(); i++) {
-                JSONObject duration = arraysForLegs.get(i).getJSONObject("duration");
-                durationValue = duration.get("text").toString();
-
-            }
+        	for(int i=0;i< alParsedResult.size();i++)
+    	    {
+    	    	System.out.println(alParsedResult.get(i).toString());
+    	    	JSONObject jsonTemp = (JSONObject) alParsedResult.get(i).getJSONObject("duration");
+    	    	durationValue[i] = jsonTemp.get("text").toString();
+    	    	System.out.println(durationValue[i]);
+    	    }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return durationValue;
     }
-
-    public String getDistanceValue(ArrayList<JSONObject> arraysForLegs) {
-        String distanceValue = "";
+    
+    public String[] getDistanceValue(ArrayList<JSONObject> alParsedResult) {
+        String []distanceValue = new String[alParsedResult.size()];
         try {
-            for (int i = 0; i < arraysForLegs.size(); i++) {
-                JSONObject duration = arraysForLegs.get(i).getJSONObject("distance");
-                distanceValue = duration.get("text").toString();
-
-            }
+        	for(int i=0;i< alParsedResult.size();i++)
+    	    {
+    	    	System.out.println(alParsedResult.get(i).toString());
+    	    	JSONObject jsonTemp = (JSONObject) alParsedResult.get(i).getJSONObject("duration");
+    	    	distanceValue[i] = jsonTemp.get("text").toString();
+    	    	System.out.println(distanceValue[i]);
+    	    }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return distanceValue;
+    }
+    
+    public ArrayList getSteps(ArrayList<JSONObject> alParsedList)
+    {
+    	ArrayList stepsForRoutes = new ArrayList();
+    	
+    	
+    	
+    	return stepsForRoutes;
+    	
     }
 
     public String getEndAddressValue(ArrayList<JSONObject> arraysForLegs) {

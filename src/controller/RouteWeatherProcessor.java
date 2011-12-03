@@ -17,7 +17,7 @@ public class RouteWeatherProcessor {
 	
 	public RouteWeatherProcessor(TripFactory factory)
 	{
-		weatherDisplayer = factory.createWeatherDisplayer();
+		//weatherDisplayer = factory.createWeatherDisplayer();
 		routeDisplayer = factory.createRouteDisplayer();
 	}
 

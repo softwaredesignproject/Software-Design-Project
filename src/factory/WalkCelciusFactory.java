@@ -14,12 +14,14 @@ public class WalkCelciusFactory extends TripFactory {
 	@Override
 	public RouteDisplayer createRouteDisplayer() {
 		// TODO Auto-generated method stub
+		System.out.println("WalkCelciusFactory RouteDisplayer");
 		return new WalkRouteDisplayer();
 	}
 
 	@Override
 	public WeatherDisplayer createWeatherDisplayer() {
 		// TODO Auto-generated method stub
+		System.out.println("WalkCelciusFactory WeatherDisplayer");
 		return new CelciusWeatherDisplayer();
 	}
 
