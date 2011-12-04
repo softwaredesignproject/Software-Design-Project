@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="lib/json-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/json-lib-0.9.jar"/>
 	<classpathentry kind="lib" path="lib/jsr311-api-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
