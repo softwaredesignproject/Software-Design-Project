@@ -7,14 +7,14 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>MIS 507: Trip Planner System</title>
+<title>MIS 507: Route Planner</title>
 
 <script language="javascript">
 </script>
 </head>
 <body>
 <form name="frmAddress"  ACTION="ControlServlet"  METHOD="POST">
-<h1>MIS 507: Trip Planner System - UserInput</h1>
+<h1>MIS 507: Route Planner - UserInput</h1>
 <table>
 			<tr>
 				<td>Start Address:</td>
@@ -35,14 +35,7 @@
 				<td><input type="text" name="endzipcode"/></td>
 
 			</tr>
-			<tr>
-				<td><SELECT name="timetype">						
-						<OPTION value="departtime">Depart By</OPTION>
-						<OPTION value="arrivetime">Arrive At</OPTION>
-				</SELECT></td>
-				<td>Date <input type="text" name="date" /> Time <input type="text" name="time" /></td>
-
-			</tr>
+			
 						
 			
 			<tr>
@@ -88,7 +81,7 @@
 				<td>Mode of transport</td>
 				<td><input name="rbtransport" type="radio" value="walk"
 					checked="checked" /> Walk <input name="rbtransport" type="radio"
-					value="bus" /> Bus 
+					value="bicycling" /> Bicycling 
 			</tr>
 			
 			<tr>

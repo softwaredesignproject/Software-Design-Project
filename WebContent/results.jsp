@@ -10,21 +10,35 @@
 
 </script>
 <%
-ArrayList arFinalResults = (ArrayList)request.getAttribute("resultarraylist");
+ArrayList arFinalResults = (ArrayList)request.getAttribute("steps");
+String[] strDuration = (String[])request.getAttribute("durationValue");
+String[] strDistance = (String[])request.getAttribute("distanceValue");
+String strWeather = (String)request.getAttribute("weatherValue");
 %>
 </head>
 <body>
 <h1>MIS 507: Trip Planner System - Results</h1>
-<p>Values from ControlServlet </p>
+
 <% 
 for(int i=0;i< arFinalResults.size();i++)
 	System.out.println(arFinalResults.get(i).toString());%>
 
+<%     
+out.write("<p><h2>"+"Weather: "+strWeather+"</h2></p><br>");
+	%>
 <%      for(int i = 0; i<arFinalResults.size(); ++i)
-			         {
-			           out.write("<p>"+arFinalResults.get(i).toString()+"<p>");
+	{ 
+	out.write("<p><h2>"+"Route: "+i+"</h2></p>");
+	out.write("<p><h3>"+"Duration: "+strDuration[i]+"</h3></p>");
+	out.write("<p><h3>"+"Distance: "+strDistance[i]+"</h3></p>");
+	out.write("<p><h3>"+"Steps: "+"</h3></p>");
+	String[] tempSteps = (String[]) arFinalResults.get(i);
+	for(int j = 0; j<tempSteps.length; ++j)
+			           out.write("<p>"+ tempSteps[j]+"</p>");
 			         }
 			    %>
+			    
+			    
 
 </body>
 </html>
