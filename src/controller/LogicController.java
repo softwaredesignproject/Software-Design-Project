@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import org.json.JSONObject;
 
+import AdjustDuration.DurationAdjustment;
 import Parser.JSONParser;
 import user.UserData;
 import factory.*;
@@ -12,8 +13,10 @@ import org.json.*;
 
 public class LogicController {
 	//UserData userData = new UserData();
-	//private ArrayList alFinalResult = new ArrayList();
+	private ArrayList alFinalResult = new ArrayList();
+	private String[] strBothDetails = new String[2];
 	private String strRouteDetails;
+	private String strWeatherDetails;
 		
 	/**
 	 * @return - results from RouteWeatherProcessor
@@ -23,14 +26,14 @@ public class LogicController {
 		TripFactory tripFactory = null ;
 		
 			System.out.println("Before decision : "+userData.getRbtransport()+userData.getRbtemp());
-		if (userData.getRbtransport().equals("bus") && (userData.getRbtemp().equals("C")))
+		if (userData.getRbtransport().equals("bicycling") && (userData.getRbtemp().equals("C")))
 		{
-			System.out.println("Bus C");
+			System.out.println("bicycling C");
 			tripFactory = new BusCelciusFactory();
 		}
-		else if (userData.getRbtransport().equals("bus") && userData.getRbtemp().equals("F"))
+		else if (userData.getRbtransport().equals("bicycling") && userData.getRbtemp().equals("F"))
 		{
-			System.out.println("Bus F");
+			System.out.println("bicycling F");
 			tripFactory = new BusFarenheitFactory();
 		}
 		else if (userData.getRbtransport().equals("walk") && userData.getRbtemp().equals("C"))
@@ -49,18 +52,38 @@ public class LogicController {
 		
 		//Get the distance result, weather result from correct factory and store in private variable
 		//alFinalResult = 
-		strRouteDetails = routeWeatherProcessor.getResults(userData);
+		strBothDetails = routeWeatherProcessor.getResults(userData);
+		strRouteDetails = strBothDetails[1];
+		strWeatherDetails = strBothDetails[0];
+		
 		JSONParser jsonParse = new JSONParser();
 	   
 	   	ArrayList<JSONObject> alParsedResult = jsonParse.parseJson(strRouteDetails);
 	   	String[] durationValue = new String[alParsedResult.size()] ;
 	   		durationValue = jsonParse.getDurationValue(alParsedResult);
-	    
+	    /*
+	   		if (userData.getRbweather()==""){
+	    	//DurationAdjustment durAdj = new DurationAdjustment(userData.getRbsex(),userData.getRbgroupsize());
+	    	
+	    	for (int i = 0;i< durationValue.length;i++) {
+	    	
+	    	}
+	    }
+	   	*/	
 	   	String[] distanceValue = new String[alParsedResult.size()] ;
 	   		distanceValue = jsonParse.getDistanceValue(alParsedResult);
+	   	
+	   	ArrayList alSteps;
+	   		alSteps = jsonParse.getSteps(alParsedResult);
 	   		
-	    
-		return alParsedResult;
+	   	
+	   		
+	   		alFinalResult.add(durationValue);
+	   		alFinalResult.add(distanceValue);
+	   		alFinalResult.add(alSteps);
+	   		alFinalResult.add(strWeatherDetails);
+	   		
+	    return alFinalResult;
 	}
 	
 	

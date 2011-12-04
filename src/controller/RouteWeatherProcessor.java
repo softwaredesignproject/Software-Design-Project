@@ -13,20 +13,24 @@ public class RouteWeatherProcessor {
 	//Calling abstract factory
 	private WeatherDisplayer weatherDisplayer;
 	private RouteDisplayer routeDisplayer;
-	String strRouteDetails;
+	String strRouteDetails="";
+	String strWeatherValue="";
+	String[] strBothDetails = new String[2];
 	
 	public RouteWeatherProcessor(TripFactory factory)
 	{
-		//weatherDisplayer = factory.createWeatherDisplayer();
+		weatherDisplayer = factory.createWeatherDisplayer();
 		routeDisplayer = factory.createRouteDisplayer();
 	}
 
-	public String getResults(UserData data)
+	public String[] getResults(UserData data)
 	{
 		//Logic to get results from weatherDisplayer and routeDisplayer methods
-		//weatherDisplayer.getRoute(data);
+		strWeatherValue = weatherDisplayer.getWeather(data);
 		strRouteDetails = routeDisplayer.getRoute(data);
 		//For now return new ArrayList
-		return strRouteDetails;
+		strBothDetails[0] =strWeatherValue;
+		strBothDetails[1] = strRouteDetails;
+		return strBothDetails;
 	}
 }
