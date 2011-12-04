@@ -73,7 +73,7 @@ public class JSONParser {
         	for(int i=0;i< alParsedResult.size();i++)
     	    {
     	    	System.out.println(alParsedResult.get(i).toString());
-    	    	JSONObject jsonTemp = (JSONObject) alParsedResult.get(i).getJSONObject("duration");
+    	    	JSONObject jsonTemp = (JSONObject) alParsedResult.get(i).getJSONObject("distance");
     	    	distanceValue[i] = jsonTemp.get("text").toString();
     	    	System.out.println(distanceValue[i]);
     	    }
@@ -84,16 +84,33 @@ public class JSONParser {
         return distanceValue;
     }
     
-    public ArrayList getSteps(ArrayList<JSONObject> alParsedList)
-    {
-    	ArrayList stepsForRoutes = new ArrayList();
-    	
-    	
-    	
-    	return stepsForRoutes;
-    	
-    }
+    public ArrayList getSteps(ArrayList<JSONObject> arraysForLegs) {
+        ArrayList stepsForRoutes = new ArrayList();
 
+
+        try {
+            for (int i = 0; i < arraysForLegs.size(); i++) {
+                JSONArray stepsArray = arraysForLegs.get(i).getJSONArray("steps");
+
+                String[] html_instructions = new String[stepsArray.length()];
+                for (int j = 0; j < stepsArray.length(); j++) {
+                    JSONObject tempSteps = stepsArray.getJSONObject(j);
+                    html_instructions[j] = tempSteps.getString("html_instructions");
+                    System.out.println(html_instructions[j]);
+
+                }
+
+                stepsForRoutes.add(html_instructions);
+            }
+
+
+        } catch (JSONException e) {
+        }
+
+        return stepsForRoutes;
+    }
+    
+    
     public String getEndAddressValue(ArrayList<JSONObject> arraysForLegs) {
         String endAddressValue = "";
         try {
