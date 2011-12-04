@@ -65,8 +65,13 @@ public class ControlServlet  extends HttpServlet {
 		 LogicController logicCtrl = new LogicController();
 		 ArrayList alControllerResult = new ArrayList();
 		 alControllerResult = logicCtrl.getAlFinalResult(userData);
-		 request.setAttribute("resultarraylist", alControllerResult);	
 		 
+		 
+		 
+		 request.setAttribute("durationValue", alControllerResult.get(0));
+		 request.setAttribute("distanceValue", alControllerResult.get(1));
+		 request.setAttribute("steps", alControllerResult.get(2));	
+		 request.setAttribute("weatherValue", alControllerResult.get(3));
 		 
 		 //Post results to JSP page		 
 		 url= "/results.jsp";
