@@ -3,9 +3,12 @@ package AdjustDuration;
 
 public class TemperatureConv {
 	double tp;
-	TemperatureConv(double tp){
+	TemperatureConv(double tp, String unit){
 		//Celsius will be passed in
-		this.tp = tp;
+		if (new String("C").equalsIgnoreCase(unit))
+			this.tp = tp;
+		else
+			this.tp = (5.0/9.0) * (tp - 32);
 	}
 	
 	public Temperature GetWea(){

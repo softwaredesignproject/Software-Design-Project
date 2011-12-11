@@ -17,7 +17,7 @@ public class CelciusWeatherDisplayer extends WeatherDisplayer{
 		
 		WeatherAPI test = new WeatherAPI(); 
 		System.out.println("C "+data.getEndzipcode());
-		String testoutput = test.getCityName(data.getEndzipcode());
+		String testoutput = test.getWeather(data.getEndzipcode());
 		JSONParserCelciusStrategy jsonParse = new JSONParserCelciusStrategy();
 		String celciusTemp = jsonParse.parseJson(testoutput);
 		System.out.println(celciusTemp);

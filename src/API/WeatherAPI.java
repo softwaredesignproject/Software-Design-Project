@@ -27,8 +27,8 @@ import java.io.*;
 
 public class WeatherAPI {
 
-    public String getCityName(String cityzip) {
-        String directionResponse = "";
+    public String getWeather(String cityzip) {
+        String temperatureValue = "";
         try {
             Client client = Client.create();
             
@@ -36,7 +36,8 @@ public class WeatherAPI {
           
             MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
            
-                    
+                // Parameters to the API Request which gives details such as how many days, hours of weather details 
+                // are requested and for which city zipcode
             	queryParams.add("api_key", "fbypgjdz5zy5w3uxrd97wvv4");
             	queryParams.add("nf", "1");
             	queryParams.add("ih", "1");
@@ -45,13 +46,13 @@ public class WeatherAPI {
             	queryParams.add("ht", "t");
             	queryParams.add("zip", cityzip);
           
-            directionResponse = webResource.queryParams(queryParams).get(String.class);
+            temperatureValue = webResource.queryParams(queryParams).get(String.class);
                              
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return directionResponse;
+        return temperatureValue;
     }
 }

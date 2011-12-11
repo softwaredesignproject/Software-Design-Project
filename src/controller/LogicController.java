@@ -61,15 +61,15 @@ public class LogicController {
 	   	ArrayList<JSONObject> alParsedResult = jsonParse.parseJson(strRouteDetails);
 	   	String[] durationValue = new String[alParsedResult.size()] ;
 	   		durationValue = jsonParse.getDurationValue(alParsedResult);
-	    /*
-	   		if (userData.getRbweather()==""){
-	    	//DurationAdjustment durAdj = new DurationAdjustment(userData.getRbsex(),userData.getRbgroupsize());
-	    	
+	    
+	   	
+	    	DurationAdjustment durAdj = new DurationAdjustment(userData.getRbsex(),userData.getRbgroupsize(),
+	    			userData.getRbweather(), userData.getRbage(),strWeatherDetails, userData.getRbtemp());
 	    	for (int i = 0;i< durationValue.length;i++) {
-	    	
+	    		durationValue[i]+= "*"+durAdj.adjustValue();
 	    	}
-	    }
-	   	*/	
+	    
+	   		
 	   	String[] distanceValue = new String[alParsedResult.size()] ;
 	   		distanceValue = jsonParse.getDistanceValue(alParsedResult);
 	   	

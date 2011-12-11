@@ -12,7 +12,7 @@ public class FarenheitWeatherDisplayer extends WeatherDisplayer {
 		// insert here logic for FarenheitWeatherDisplayer
 		WeatherAPI test = new WeatherAPI(); 
 		System.out.println("F "+data.getEndzipcode());
-		String testoutput = test.getCityName(data.getEndzipcode());
+		String testoutput = test.getWeather(data.getEndzipcode());
 		JSONParserFareneheitStrategy jsonParse = new JSONParserFareneheitStrategy();
 		String farenheitTemp = jsonParse.parseJson(testoutput);
 		System.out.println(farenheitTemp);
