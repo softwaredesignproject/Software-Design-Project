@@ -1,0 +1,9 @@
+This file contains instructions to deploy this Software Design Project:
+
+1) Create a J2EE project in Eclipse IDE
+2) Import this project as a general file system into the newly created J2EE project, overwriting default files.
+3) Ensure buildpath of project is configured to contain all jars in the lib folder
+4) Use JavaSE-1.6 for compiling the project
+5) Create a new Tomcat 6 server in Eclipse
+6) Deploy the project in Tomcat server in the default port 8080
+7) Access the starting page directions.jsp using the following URL: http://localhost:8080/SWDRouteProject/
